@@ -27,6 +27,6 @@ mongoose.connection.on('error', err =>
     console.error('Error connecting to mongoDb ...', err)
 );
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`App run on port 3000`);
 });
