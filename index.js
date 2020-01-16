@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const auth = require('./routes/auth');
-const tracks = require('./routes/track')
+const tracks = require('./routes/track');
 
 const app = express();
 app.use(cors());
@@ -28,6 +28,10 @@ mongoose.connection.on('connected', () =>
 mongoose.connection.on('error', err =>
     console.error('Error connecting to mongoDb ...', err)
 );
+
+app.get('/', (req, res) => {
+    res.status(200).send('Welcome to my tracking server ...');
+});
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`App run on port 3000`);
